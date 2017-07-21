@@ -17,5 +17,7 @@ app.listen(2000|process.env,()=>console.log("Listening port 2000"));
 
  app.get('/',(req,res)=>{
     res.sendFile(__dirname+"/public/index1.html");
-    console.log(req.query.search);
+    if(req.query.search !== undefined) {
+        console.log("Search for",req.query.search)
+    }
  });

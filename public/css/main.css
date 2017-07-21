@@ -55,43 +55,11 @@ input[type=checkbox]:checked~#wrapper #handle-wrapper {
     aopacity: 0;
 }
 
-#wrapper::after {
-    content: 'No results';
-    position: absolute;
-    display: block;
-    width: 243px;
-    height: 28px;
-    padding-top: 12px;
-    left: 66px;
-    top: 5px;
-    color: #7e29c2;
-    text-align: left;
-    font-size: 15px;
-    font-weight: 700;
-    background: transparent;
-    opacity: 0;
-    z-index: -1;
-}
 
-input[type=checkbox]:checked~#wrapper #loader {
-    display: block;
-    opacity: 0;
-    animation: rotate 5s;
-}
 
-input[type=checkbox]:checked~#wrapper::after {
-    background: rgba(255, 255, 255, .5);
-    opacity: 1;
-    z-index: 1;
-    padding-left: 14px;
-    width: 229px;
-    transition: all .3s 5s;
-}
 
-input[type=checkbox]:checked~#wrapper #back-wrapper {
-    opacity: 1;
-    transition: all .3s 5.3s;
-}
+
+
 
 #wrapper {
     position: absolute;
@@ -103,9 +71,9 @@ input[type=checkbox]:checked~#wrapper #back-wrapper {
 input {
     border: 5px solid #fff;
     outline: none;
-    width: 50px;
+    width: 3rem;
     max-width: 260px;
-    height: 50px;
+    height: 3rem;
     margin-left: 25px;
     border-radius: 250px;
     background: rgba(255, 255, 255, 0);
@@ -186,90 +154,6 @@ input:focus:-ms-input-placeholder {
     opacity: 0;
     left: 105%;
     z-index: 2;
-}
-
-#back-wrapper::after {
-    content: 'Back';
-    position: absolute;
-    transform: rotate(180deg);
-    bottom: -30px;
-    background: rgba(255, 255, 255, .5);
-    padding: 5px;
-    right: 17px;
-    opacity: 0;
-    transition: all .3s;
-}
-
-#back-wrapper::before {
-    content: '';
-    border: 8px solid rgba(255, 255, 255, .5);
-    border-color: transparent transparent rgba(255, 255, 255, .5) transparent;
-    position: absolute;
-    bottom: -2px;
-    right: 19px;
-    opacity: 0;
-    transition: all .3s;
-}
-
-#back-wrapper:hover::before,
-#back-wrapper:hover::after {
-    bottom: -35px;
-    opacity: 1;
-}
-
-#back-wrapper:hover::before {
-    bottom: -7px;
-}
-
-#handle,
-#back {
-    width: 30px;
-    height: 4px;
-    background: #fff;
-    position: absolute;
-    left: 80%;
-    top: 80%;
-    display: block;
-    transform: rotate(45deg) translate(-40px, 40px);
-    transform-origin: 0 0;
-    transition: all .3s;
-}
-
-#back {
-    transform: rotate(0deg) translate(-30px, -18px);
-    height: 5px;
-}
-
-#handle::before,
-#handle::after,
-#back::before,
-#back::after {
-    content: '';
-    width: 30px;
-    height: 1px;
-    background: #fff;
-    top: 0;
-    right: 0;
-    position: absolute;
-}
-
-#back::before {
-    transform: rotate(-45deg) translate(-1px, 9px);
-    width: 20px;
-    height: 4px;
-}
-
-#handle::after,
-#back::after {
-    top: 3px;
-    transform-origin: 100% 100%;
-}
-
-#back::after {
-    transform: rotate(45deg) translate(-3px, -2px);
-    width: 18px;
-    height: 4px;
-    transition: all .3s .3s, background .3s .6s;
 }
 
 input:focus~#handle-wrapper {
