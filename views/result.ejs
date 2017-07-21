@@ -36,8 +36,12 @@
         <div class="nav-wrapper">
             <div class="col s12">
 
-                <a href="#!" class="breadcrumb">00451202716</a>
-                <a href="#!" class="breadcrumb">Aniket Sharma</a>
+                <a href="#!" class="breadcrumb">
+                    <%= rollnumber %>
+                </a>
+                <a href="#!" class="breadcrumb">
+                    <%= name %>
+                </a>
             </div>
         </div>
     </nav>
@@ -59,125 +63,17 @@
     <div class="tbl-content">
         <table cellpadding="0" cellspacing="0" border="0">
             <tbody>
-                <tr>
-                    <td>98301</td>
-                    <td>24</td>
-                    <td>50</td>
-                    <td>74</td>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <td>98301</td>
-                     
-                     
-                    <td>24</td>
-                    <td>50</td>
-                    <td>74</td>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <td>98301</td>
-                     
-                     
-                    <td>24</td>
-                    <td>50</td>
-                    <td>74</td>
-                    <td>4</td>
-                </tr>
-                <tr>
-                    <td>98301</td>
-                     
-                     
-                    <td>24</td>
-                    <td>50</td>
-                    <td>74</td>
-                    <td>4</td>
-                </tr>
-                <tr>
-                    <td>98301</td>
-                     
-                     
-                    <td>24</td>
-                    <td>50</td>
-                    <td>74</td>
-                    <td>4</td>
-                </tr>
-                <tr>
-                    <td>98301</td>
-                     
-                     
-                    <td>24</td>
-                    <td>50</td>
-                    <td>74</td>
-                    <td>4</td>
-                </tr>
 
-                <tr>
-                    <td>98301</td>
-                     
-                     
-                    <td>24</td>
-                    <td>50</td>
-                    <td>74</td>
-                    <td>4</td>
-                </tr>
-                <tr>
-                    <td>98301</td>
-                     
-                     
-                    <td>24</td>
-                    <td>50</td>
-                    <td>74</td>
-                    <td>4</td>
-                </tr>
-                <tr>
-                    <td>98301</td>
-                     
-                     
-                    <td>24</td>
-                    <td>50</td>
-                    <td>74</td>
-                    <td>4</td>
-                </tr>
-                <tr>
-                    <td>98301</td>
-                     
-                     
-                    <td>24</td>
-                    <td>50</td>
-                    <td>74</td>
-                    <td>4</td>
-                </tr>
-                <tr>
-                    <td>98301</td>
-                     
-                     
-                    <td>24</td>
-                    <td>50</td>
-                    <td>74</td>
-                    <td>4</td>
-                </tr>
-
-                <tr>
-                    <td>98301</td>
-                     
-                     
-                    <td>24</td>
-                    <td>50</td>
-                    <td>74</td>
-                    <td>4</td>
-                </tr>
-                <tr>
-                    <td>98301</td>
-                     
-                     
-                    <td>24</td>
-                    <td>50</td>
-                    <td>74</td>
-                    <td>4</td>
-                </tr>
-
-
+                <% for(var i =0 ; i < result.length;i++){%>
+                    <tr>
+                        <td><%= result[i].id %></td>
+                        <td><%= result[i].internal_mark %></td>
+                        <td><%= result[i].external_mark %></td>
+                        <td><%= result[i].total %></td>
+                        <td><%= result[i].credit %></td>
+                    </tr>
+                    <%}%>
+                    
             </tbody>
         </table>
     </div>
@@ -193,8 +89,8 @@
             <div class="col s1 m2 l2"></div>
             <div class="col s4 m2 l2">
                 <div class="clearfix" id="net-percentage">
-                    <div class="c100 p71 dark">
-                        <span>71%</span>
+                    <div class="c100 p<%= total %> dark">
+                        <span><%= total %>%</span>
                         <div class="slice">
                             <div class="bar"></div>
                             <div class="fill"></div>
@@ -207,8 +103,8 @@
             <div class="col s1 m4 l4"></div>
             <div class="col s4 m2 l2">
                 <div id="credit-percentage">
-                    <div class="c100 p74 dark">
-                        <span>74%</span>
+                    <div class="c100 p<%= credit %> dark">
+                        <span><%= credit %>%</span>
                         <div class="slice">
                             <div class="bar"></div>
                             <div class="fill"></div>
@@ -223,33 +119,33 @@
             </div>
         </div>
 
-<div class="row" ></div>
-<div class="row" ></div>
+        <div class="row"></div>
+        <div class="row"></div>
 
         <nav style="background-color:transparent;">
             <div class="nav-wrapper">
                 <div class="col s12">
 
                     <a href="#!" class="breadcrumb">College Rank</a>
-                    <a href="#!" class="breadcrumb" id="College-rank">25</a>
+                    <a href="#!" class="breadcrumb" id="College-rank"><%= college_rank %></a>
                 </div>
             </div>
         </nav>
 
 
-             <nav style="background-color:transparent;">
+        <nav style="background-color:transparent;">
             <div class="nav-wrapper">
                 <div class="col s12">
 
                     <a href="#!" class="breadcrumb">University Rank</a>
-                    <a href="#!" class="breadcrumb" id="university-rank">355</a>
+                    <a href="#!" class="breadcrumb" id="university-rank"><%= university_rank %></a>
                 </div>
             </div>
         </nav>
 
     </div>
-<div class="row" ></div>
-<div class="row" ></div>
+    <div class="row"></div>
+    <div class="row"></div>
 
     <div class="quote">
         <h5 class="quote-wrap"> made with <i class="material-icons">favorite</i> by me</h5>
@@ -260,7 +156,6 @@
 
     <script>
         window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')
-
     </script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
@@ -281,7 +176,6 @@
         }(window, document, 'script', 'ga'));
         ga('create', 'UA-XXXXX-X', 'auto');
         ga('send', 'pageview');
-
     </script>
 </body>
 

@@ -4,24 +4,60 @@ var isResultFound = true;
 var isValidSearch = true;
 
 /**
- * Facke Student data
+ * Fake Student data
  */
 var studentdata = {
     rollnumber : "00451202716",
     name:"Aniket sharma",
-    result:{
-        "98990" :[19,50,69,1],
-        "98990" :[19,50,69,1],
-        "98990" :[19,50,69,4],
-        "98990" :[19,50,69,4],
-        "98990" :[19,50,69,4],
-        "98990" :[19,50,69,4],
-        "98990" :[19,50,69,4],
+    result:[
+     {  id : "98990",
+        internal_mark : 19,
+        external_mark : 50,
+        total : 69,
+        credit:1
     },
+         {  id : "98990",
+        internal_mark : 19,
+        external_mark : 50,
+        total : 69,
+        credit:1
+    },
+         {  id : "98990",
+        internal_mark : 19,
+        external_mark : 50,
+        total : 69,
+        credit:1
+    },
+         {  id : "98990",
+        internal_mark : 19,
+        external_mark : 50,
+        total : 69,
+        credit:1
+    },
+         {  id : "98990",
+        internal_mark : 19,
+        external_mark : 50,
+        total : 69,
+        credit:1
+    },
+         {  id : "98990",
+        internal_mark : 19,
+        external_mark : 50,
+        total : 69,
+        credit:1
+    },
+         {  id : "98990",
+        internal_mark : 19,
+        external_mark : 50,
+        total : 69,
+        credit:1
+    },
+    
+    ],
     total : 85,
     credit : 83,
     college_rank : 23,
-    univerity_rank :74,    
+    university_rank :274,    
 
 }
 
@@ -57,7 +93,7 @@ app.listen(2000|process.env,()=>console.log("Listening port 2000"));
         searchResult(req.query.search);
         
         if(isResultFound)    
-            res.render('result');
+            res.render('result',studentdata);
         
         else if(isValidSearch)
                 updateApi();
