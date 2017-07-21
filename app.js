@@ -119,6 +119,7 @@ app.listen(2000|process.env,()=>console.log("Listening port 2000"));
  * Checks rollnumber
  * Search for result in api
  */
+
  function searchResult(rollnumber){
      /**
       * Checks if query is valid rollnumber or not
