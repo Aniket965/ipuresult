@@ -74,7 +74,7 @@ app.use(express.static(__dirname + '/public'))
 /**
  * listen to port
  */
-app.listen(2000|process.env,()=>console.log("Listening port 2000"));
+app.listen( process.env.PORT || 1337,()=>console.log("Listening port 2000"));
 
 
 /**
