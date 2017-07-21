@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400');
+html {
+    overflow-x: hidden !important;
+}
+body {
+    background: #FF512F;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #DD2476, #FF512F);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #DD2476, #FF512F);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    font-size: 100%;
+    text-align: center;
+}
+
+.heading-brand {
+    font-family: 'Lato', sans-serif;
+    color: #fff;
+    font-size: 3.5rem;
+}
+
+.quote-wrap {
+    font-family: 'Lato', sans-serif;
+    color: #fff;
+    font-weight: 300;
+    text-align: center;
+    width: 100vw;
+}
+
+.quote {
+    position: relative;
+    bottom: 0;
+    margin-bottom: 10vh;
+}
+
+table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+.tbl-header {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.tbl-content {
+    height: 300px;
+    overflow-x: auto;
+    margin-top: 0px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+th {
+    padding: 20px 15px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 1rem;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+td {
+    padding: 15px;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: 300;
+    font-size: 1rem;
+    color: #fff;
+    border-bottom: solid 1px rgba(255, 255, 255, 0.1);
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+section {
+    margin: 50px;
+}
+
+
+/* for custom scrollbar for webkit browser*/
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+@media only screen and (max-device-width: 500px) {
+    /* Styles */
+    th {
+        padding: 20px 15px;
+        text-align: center;
+        font-weight: 500;
+        font-size: 0.5rem;
+        color: #fff;
+        text-transform: uppercase;
+    }
+    td {
+        padding: 15px;
+        text-align: center;
+        vertical-align: middle;
+        font-weight: 400;
+        font-size: 0.5rem;
+        color: #fff;
+        border-bottom: solid 1px rgba(255, 255, 255, 0.1);
+    }
+}
+
+div#net-percentage {
+    margin: 0 auto;
+}
+
+span {
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+}
+
+.circle-title {
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+     color: whitesmoke;
+    font-size: 1rem;
+    /* background: red; */
+    text-align: center;
+    margin-left: 1rem;
+}
+
+
+/* badges */
+.rankbadge{
+    color: white;
+    border-radius: 50%;
+    background: #666666;
+}
+
+.rank {
+        font-size: 4rem;
+        color:  #c6ff00;
+}
+
+
+nav{
+        box-shadow: none;
+}   
