@@ -1,0 +1,25 @@
+{
+  "name": "ipuresult",
+  "version": "1.0.0",
+  "description": "template",
+  "main": "app.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aniket965/ipuresult.git"
+  },
+  "author": "aniket965",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Aniket965/ipuresult/issues"
+  },
+  "homepage": "https://github.com/Aniket965/ipuresult#readme",
+  "dependencies": {
+    "express": "^4.15.3"
+  }
+}
