@@ -2,18 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Page Not Found</title>
+    <title>Result Not Found</title>
     <meta name="theme-color" content="#DD2476">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
 
         * {
+            
             line-height: 1.2;
             margin: 0;
         }
 
         html {
-            color: #888;
+            background: #FF512F;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #DD2476, #FF512F);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #DD2476, #FF512F);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            color: #fff;
             display: table;
             font-family: sans-serif;
             height: 100%;
@@ -28,14 +35,15 @@
         }
 
         h1 {
-            color: #555;
-            font-size: 2em;
+            color: whitesmoke;
+            font-size: 5rem;
             font-weight: 400;
         }
 
         p {
             margin: 0 auto;
             width: 280px;
+            font-size:  1.5rem;
         }
 
         @media only screen and (max-width: 280px) {
@@ -54,8 +62,8 @@
     </style>
 </head>
 <body>
-    <h1>Page Not Found</h1>
-    <p>Sorry, but the page you were trying to view does not exist.</p>
+  <h1>Result Not Found</h1>
+    <p>Sorry, but we have intialized our app to check for updates at ipu official site <strong> Check back in few Minutes<strong></p>
 </body>
 </html>
 <!-- IE needs 512+ bytes: http://blogs.msdn.com/b/ieinternals/archive/2010/08/19/http-error-pages-in-internet-explorer.aspx -->
