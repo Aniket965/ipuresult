@@ -1,7 +1,30 @@
 var express = require('express');
 var  app = express();
 var isResultFound = true;
-var isValidSearch = true; 
+var isValidSearch = true;
+
+/**
+ * Facke Student data
+ */
+var studentdata = {
+    rollnumber : "00451202716",
+    name:"Aniket sharma",
+    result:{
+        "98990" :[19,50,69,1],
+        "98990" :[19,50,69,1],
+        "98990" :[19,50,69,4],
+        "98990" :[19,50,69,4],
+        "98990" :[19,50,69,4],
+        "98990" :[19,50,69,4],
+        "98990" :[19,50,69,4],
+    },
+    total : 85,
+    credit : 83,
+    college_rank : 23,
+    univerity_rank :74,    
+
+}
+
 /**
  * set view engine
  */
