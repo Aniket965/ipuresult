@@ -1,72 +1,8 @@
 var express = require('express');
 var app = express();
-var isResultFound = true;
+var isResultFound = false;
 var isValidSearch = true;
-
-/**
- * Fake Student data
- */
-var studentdata = {
-    rollnumber: "00451202716",
-    name: "Aniket sharma",
-    result: [{
-            id: "98990",
-            internal_mark: 19,
-            external_mark: 50,
-            total: 69,
-            credit: 1
-        },
-        {
-            id: "98990",
-            internal_mark: 19,
-            external_mark: 50,
-            total: 69,
-            credit: 1
-        },
-        {
-            id: "98990",
-            internal_mark: 19,
-            external_mark: 50,
-            total: 69,
-            credit: 1
-        },
-        {
-            id: "98990",
-            internal_mark: 19,
-            external_mark: 50,
-            total: 69,
-            credit: 1
-        },
-        {
-            id: "98990",
-            internal_mark: 19,
-            external_mark: 50,
-            total: 69,
-            credit: 1
-        },
-        {
-            id: "98990",
-            internal_mark: 19,
-            external_mark: 50,
-            total: 69,
-            credit: 1
-        },
-        {
-            id: "98990",
-            internal_mark: 19,
-            external_mark: 50,
-            total: 69,
-            credit: 1
-        },
-
-    ],
-    total: 85,
-    credit: 83,
-    college_rank: 23,
-    university_rank: 274,
-
-}
-
+var studentdata;
 /**
  * set view engine
  */
@@ -82,6 +18,7 @@ app.use(express.static(__dirname + '/public'))
  */
 app.listen(process.env.PORT || 2000, () => console.log("Listening port 2000"));
 
+var roll;
 
 /**
  * Search request
@@ -96,15 +33,7 @@ app.get('/', (req, res) => {
      */
     if (req.query.search !== undefined) {
 
-        searchResult(req.query.search);
-
-        if (isResultFound)
-            res.render('result', studentdata);
-
-        else if (isValidSearch)
-            updateApi();
-        else
-            res.render('404')
+        searchResult(res,req.query.search.toString());
 
 
     }
@@ -126,7 +55,7 @@ app.get('/', (req, res) => {
  * Search for result in api
  */
 
-function searchResult(rollnumber) {
+function searchResult(res,rollnumber) {
     /**
      * Checks if query is valid rollnumber or not
      */
@@ -134,7 +63,8 @@ function searchResult(rollnumber) {
         isResultFound = true
 
         findApi();
-        getDataFromApi();
+
+        getDataFromApi(res,rollnumber);
 
     } else {
         isResultFound = false
@@ -164,12 +94,20 @@ function findApi(rollnumber) {
  * calls apis 02216403213
  */
 
-function getDataFromApi() {
+function getDataFromApi(res,rn) {
     var request = require('request');
     request('https://raw.githubusercontent.com/ipuresults/btech/master/api/16403217.json', function (error, response, body) {
         if (!error && response.statusCode == 200) {
             var info = JSON.parse(body)
-            extractDatafromstudentAPI(JSON.stringify(info["02316403213"]));
+            if(info[rn] !== undefined) {
+                roll = rn 
+                extractDatafromstudentAPI(res,JSON.stringify(info[rn]));
+                }       
+            else
+                res.render('404')   
+        }
+        if(error) {
+            res.render('404')
         }
     })
 }
@@ -181,15 +119,13 @@ function getDataFromApi() {
  */
 
 
- function extractDatafromstudentAPI(studentInfo) {
+ function extractDatafromstudentAPI(res,studentInfo) {
     //  console.log(studentInfo)
     var sd = studentInfo + "";
     var name = studentInfo.substring(12,studentInfo.indexOf("SID:"));
     // console.log(name)
     
-         let reme = /\d{5}\(\d\)/g;
-
-      
+         let reme = /\d{5}\(\d\)/g;      
         var match, indexes = [];
         var prev = null;
         var result = []
@@ -242,15 +178,7 @@ function getDataFromApi() {
                         internal_mark :internal,
                         external_mark:external,
                         total : total
-                    })
-
-                    console.log({
-                        id:id,
-                        credit:credit,
-                        internal_mark :internal,
-                        external_mark:external,
-                        total : total
-                    })
+                    });
                 }
                 else
                     break;
@@ -259,6 +187,16 @@ function getDataFromApi() {
             prev = match.index
     }
     
-
-    
+    studentdata = {
+        name:name,
+        rollnumber : roll,
+        result:result,
+        total : "89",
+        credit:"79",
+        college_rank:25,
+        university_rank:89
+    }
+    console.log(result)
+  
+    res.render('result', studentdata);
  }
