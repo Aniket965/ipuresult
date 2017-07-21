@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/Aniket965/ipuresult#readme",
   "dependencies": {
+    "ejs": "^2.5.6",
     "express": "^4.15.3"
   }
 }
