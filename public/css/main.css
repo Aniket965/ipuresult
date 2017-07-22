@@ -21,6 +21,7 @@ body {
     overflow: hidden;
 }
 
+
 input[type=checkbox] {
     display: none;
 }
@@ -257,4 +258,23 @@ input:focus~#handle-wrapper:hover #handle {
     bottom:0;
     margin-bottom: 10vh;
     
+}
+/* unvisited link */
+a:link {
+    color: whitesmoke;
+}
+
+/* visited link */
+a:visited {
+    color: red;
+}
+
+/* mouse over link */
+a:hover {
+    color: hotpink;
+}
+
+/* selected link */
+a:active {
+    color: hotpink;
 }
