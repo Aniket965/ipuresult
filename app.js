@@ -33,9 +33,7 @@ app.get('/', (req, res) => {
      */
     if (req.query.search !== undefined) {
 
-        searchResult(res,req.query.search.toString());
-
-
+        searchResult(res, req.query.search.toString());
     }
 
 
@@ -55,16 +53,14 @@ app.get('/', (req, res) => {
  * Search for result in api
  */
 
-function searchResult(res,rollnumber) {
+function searchResult(res, rollnumber) {
     /**
      * Checks if query is valid rollnumber or not
      */
     if (/^\d{11}$/.test(rollnumber)) {
         isResultFound = true
 
-        findApi();
-
-        getDataFromApi(res,rollnumber);
+        findApi(res, rollnumber);
 
     } else {
         isResultFound = false
@@ -85,8 +81,31 @@ function updateApi() {
  * finds api code through specific algoruth
  */
 
-function findApi(rollnumber) {
+function findApi(res, rollnumber) {
+    var code = "";
+    /**
+     * for usict
+     */
+    var d = new Date();
+    var n = d.getFullYear() + "";
+    var yearcode = parseInt(n.substring(2, 4));
+    if (rollnumber.indexOf("164") === 3) {
 
+        code = rollnumber.substring(3, 9) + yearcode;
+
+    } else {
+
+        /**
+         * checks which sem is on way
+         */
+        if (d.getMonth() > 5) {
+            var semcode = (yearcode - parseInt(rollnumber.substring(9, 11))) * 2;
+        } else {
+            var semcode = ((yearcode - parseInt(rollnumber.substring(9, 11))) * 2) - 1;
+        }
+        code = semcode +rollnumber.substring(3, 9) + yearcode ;
+    }
+    getDataFromApi(res, rollnumber, code);
 }
 
 
@@ -94,24 +113,22 @@ function findApi(rollnumber) {
  * calls apis 02216403213
  */
 
-function getDataFromApi(res,rn) {
+function getDataFromApi(res, rn, code) {
     var request = require('request');
-    request('https://raw.githubusercontent.com/ipuresults/btech/master/api/16412817.json', function (error, response, body) {
+    request('https://raw.githubusercontent.com/ipuresults/btech/master/api/' + code + '.json', function (error, response, body) {
+    //    console.log(body)
         if (!error && response.statusCode == 200) {
             var info = JSON.parse(body)
-            if(info[rn] !== undefined) {
-                roll = rn 
+            if (info[rn] !== undefined) {
+                roll = rn
                 info[rn].total = Math.floor(info[rn].total)
                 info[rn].credit = Math.floor(info[rn].credit)
-
-                res.render('result',info[rn])
-                }       
-            else
-                res.render('404')   
+                res.render('result', info[rn])
+            } else
+                res.render('404')
         }
-        if(error) {
+        else  {
             res.render('404')
         }
     })
 }
-
