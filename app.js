@@ -96,12 +96,15 @@ function findApi(rollnumber) {
 
 function getDataFromApi(res,rn) {
     var request = require('request');
-    request('https://raw.githubusercontent.com/ipuresults/btech/master/api/16403217.json', function (error, response, body) {
+    request('https://raw.githubusercontent.com/ipuresults/btech/master/api/16412817.json', function (error, response, body) {
         if (!error && response.statusCode == 200) {
             var info = JSON.parse(body)
             if(info[rn] !== undefined) {
                 roll = rn 
-                extractDatafromstudentAPI(res,JSON.stringify(info[rn]));
+                info[rn].total = Math.floor(info[rn].total)
+                info[rn].credit = Math.floor(info[rn].credit)
+
+                res.render('result',info[rn])
                 }       
             else
                 res.render('404')   
@@ -112,91 +115,3 @@ function getDataFromApi(res,rn) {
     })
 }
 
-
-
-/**
- * Extract data from json to make it more clean
- */
-
-
- function extractDatafromstudentAPI(res,studentInfo) {
-    //  console.log(studentInfo)
-    var sd = studentInfo + "";
-    var name = studentInfo.substring(12,studentInfo.indexOf("SID:"));
-    // console.log(name)
-    
-         let reme = /\d{5}\(\d\)/g;      
-        var match, indexes = [];
-        var prev = null;
-        var result = []
-        var ids = {};
-    while (match = reme.exec(studentInfo)) {
-            if(prev !== null && ((match.index - prev) < 30)) {
-               var smalldata = sd.substr(match.index,40); 
-                var id = smalldata.substring(0,5);
-                
-                if(ids[id] === undefined) {
-                    var d = {}
-                    ids[id] = id;
-                    var credit = smalldata.substring(6,7);
-                    var scorestring = smalldata.substring(8,smalldata.indexOf("\\r\\n"))
-                    // console.log(scorestring)
-                    var rescore = /\d{1,2}/g;
-                    var scoreMatch = scorestring.match(rescore);
-                   
-                    let internal = "NA";
-                    let external = "NA";
-                    let total = "NA"
-                    if(scoreMatch.length=== 2) {
-                        
-                        if(scoreMatch.indexOf(scoreMatch[0]) < 3){
-                            internal = parseInt(scoreMatch[0])
-                            external = parseInt(scoreMatch[1])
-                            total = internal + external 
-                        }
-                    }
-
-                   else if(scoreMatch.length === 1) {
-                    // console.log(scoreMatch.indexOf(scoreMatch[0]))    
-                    if(scorestring.indexOf(scoreMatch[0])< 3) {
-                            
-                            internal = scoreMatch[0]
-                            total = parseInt(internal)
-                        }
-                        else {
-                            external = scoreMatch[0]
-                            total  = parseInt(external)
-                        }
-                    }
-    
-                    // if(scorestring.includes("89"))
-                    // console.log(internal,external)
-
-                    result.push({
-                        id:id,
-                        credit:credit,
-                        internal_mark :internal,
-                        external_mark:external,
-                        total : total
-                    });
-                }
-                else
-                    break;
-                
-            }
-            prev = match.index
-    }
-    
-    studentdata = {
-        name:name,
-        rollnumber : roll,
-        result:result,
-        total : "89",
-        credit:"79",
-        college_rank:25,
-        university_rank:89
-    }
-    console.log(result)
-  
-    res.render('result', studentdata);
- }
