@@ -83,6 +83,7 @@ function updateApi() {
 
 function findApi(res, rollnumber) {
     var code = "";
+
     /**
      * for usict
      */
