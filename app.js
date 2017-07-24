@@ -1,5 +1,5 @@
 var express = require('express');
-var urlExists = require('url-exists');
+
 var request = require('request');
 var app = express();
 var isResultFound = false;
@@ -75,7 +75,8 @@ function searchResult(res, rollnumber) {
  * Updates the api
  */
 function updateApi() {
-
+    request("https://btechipuresults.herokuapp.com/update");
+    
 }
 
 
@@ -102,18 +103,20 @@ function findApi(res, rollnumber) {
          * checks which sem is on way
          */
         if (d.getMonth() > 5) {
-            var semcode = (yearcode - parseInt(rollnumber.substring(9, 11))) * 2;
+            var semcode = (yearcode - parseInt(rollnumber.substring(9, 11))) * 2 - 1;
         } else {
             var semcode = ((yearcode - parseInt(rollnumber.substring(9, 11))) * 2) - 1;
         }
-        code = semcode +rollnumber.substring(3, 9) + yearcode ;
-    }
+        code = semcode +rollnumber.substring(6, 9) + yearcode ;
+        console.log(code)
+    }   
+
     getDataFromApi(res, rollnumber, code);
 }
 
 
 /**
- * calls apis 02216403213
+ * calls apis  
  */
 
 function getDataFromApi(res, rn, code) {
@@ -131,8 +134,10 @@ function getDataFromApi(res, rn, code) {
             } else
                 res.render('404')
         }
+
         else if(response.statusCode !== 200)  {
-            res.render('404')
+            res.render('404');
+            updateApi()
         }
         else{
              res.render('404')
