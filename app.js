@@ -101,8 +101,8 @@ function findApi(res, rollnumber) {
     /**
      * For MBA
      */
-    else if(rollnumber.indexOf("039") === 9) {
-        code = "039"+yearcode;
+    else if(rollnumber.indexOf("039") === 6) {
+        code = "039"+ yearcode;
     }
     else {
 
