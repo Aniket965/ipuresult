@@ -1,4 +1,6 @@
 var express = require('express');
+var urlExists = require('url-exists');
+var request = require('request');
 var app = express();
 var isResultFound = false;
 var isValidSearch = true;
@@ -115,9 +117,10 @@ function findApi(res, rollnumber) {
  */
 
 function getDataFromApi(res, rn, code) {
-    var request = require('request');
+
+
     request('https://raw.githubusercontent.com/ipuresults/btech/master/api/' + code + '.json', function (error, response, body) {
-    //    console.log(body)
+ 
         if (!error && response.statusCode == 200) {
             var info = JSON.parse(body)
             if (info[rn] !== undefined) {
@@ -128,8 +131,11 @@ function getDataFromApi(res, rn, code) {
             } else
                 res.render('404')
         }
-        else  {
+        else if(response.statusCode !== 200)  {
             res.render('404')
         }
-    })
+        else{
+             res.render('404')
+        }
+    });
 }
