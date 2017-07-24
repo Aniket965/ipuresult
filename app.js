@@ -103,7 +103,7 @@ function findApi(res, rollnumber) {
          * checks which sem is on way
          */
         if (d.getMonth() > 5) {
-            var semcode = (yearcode - parseInt(rollnumber.substring(9, 11))) * 2 - 1;
+            var semcode = (yearcode - parseInt(rollnumber.substring(9, 11))) * 2 ;
         } else {
             var semcode = ((yearcode - parseInt(rollnumber.substring(9, 11))) * 2) - 1;
         }
