@@ -97,7 +97,14 @@ function findApi(res, rollnumber) {
 
         code = rollnumber.substring(3, 9) + yearcode;
 
-    } else {
+    }
+    /**
+     * For MBA
+     */
+    else if(rollnumber.indexOf("039") === 9) {
+        code = "039"+yearcode;
+    }
+    else {
 
         /**
          * checks which sem is on way
