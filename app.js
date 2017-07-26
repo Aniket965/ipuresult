@@ -114,7 +114,8 @@ function findApi(res, rollnumber) {
         rollnumber.indexOf("088") === 6 ||
         rollnumber.indexOf("089") === 6 ||
         rollnumber.indexOf("248") === 6 ||
-        rollnumber.indexOf("740") === 6) {
+        rollnumber.indexOf("740") === 6||
+        rollnumber.indexOf("020") === 6) {
         code = rollnumber.substr(6, 3) + yearcode;
         console.log(code);
             if (rollnumber.indexOf("039") === 6)
