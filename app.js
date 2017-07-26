@@ -76,6 +76,7 @@ function searchResult(res, rollnumber) {
  */
 function updateApi() {
     request("https://btechipuresults.herokuapp.com/update");
+    console.log("updating");
     request("https://whoami-ani965.herokuapp.com/update");
 }
 
@@ -97,16 +98,16 @@ function findApi(res, rollnumber) {
      * callcode 1 is for aniket965/res repo
      * callcode 0  for ipuresults/btech
      */
-    var callcode = 0;
-    if (rollnumber.indexOf("164") === 3) {
+    var callcode = 0;   
+    // if (rollnumber.indexOf("164") === 3) {
 
-        code = rollnumber.substring(3, 9) + yearcode;
+    //     code = rollnumber.substring(3, 9) + yearcode;
 
-    }
+    // }
     /**
      * For MBA
      */
-    else if (rollnumber.indexOf("039") === 6 ||
+    if (rollnumber.indexOf("039") === 6 ||
         rollnumber.indexOf("021") === 6 ||
         rollnumber.indexOf("044") === 6 ||
         rollnumber.indexOf("065") === 6 ||
@@ -131,7 +132,7 @@ function findApi(res, rollnumber) {
         code = semcode + rollnumber.substring(6, 9) + yearcode;
         console.log(code)
     }
-
+   
     getDataFromApi(res, rollnumber, code,callcode);
 }
 
