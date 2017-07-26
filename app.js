@@ -76,7 +76,7 @@ function searchResult(res, rollnumber) {
  */
 function updateApi() {
     request("https://btechipuresults.herokuapp.com/update");
-    
+    request("https://whoami-ani965.herokuapp.com/update");
 }
 
 
@@ -93,6 +93,11 @@ function findApi(res, rollnumber) {
     var d = new Date();
     var n = d.getFullYear() + "";
     var yearcode = parseInt(n.substring(2, 4));
+    /**
+     * callcode 1 is for aniket965/res repo
+     * callcode 0  for ipuresults/btech
+     */
+    var callcode = 0;
     if (rollnumber.indexOf("164") === 3) {
 
         code = rollnumber.substring(3, 9) + yearcode;
@@ -101,24 +106,33 @@ function findApi(res, rollnumber) {
     /**
      * For MBA
      */
-    else if(rollnumber.indexOf("039") === 6) {
-        code = "039"+ yearcode;
-    }
-    else {
+    else if (rollnumber.indexOf("039") === 6 ||
+        rollnumber.indexOf("021") === 6 ||
+        rollnumber.indexOf("044") === 6 ||
+        rollnumber.indexOf("065") === 6 ||
+        rollnumber.indexOf("088") === 6 ||
+        rollnumber.indexOf("089") === 6 ||
+        rollnumber.indexOf("248") === 6 ||
+        rollnumber.indexOf("740") === 6) {
+        code = rollnumber.substr(6, 3) + yearcode;
+        console.log(code);
+
+        callcode = 1;
+    } else {
 
         /**
          * checks which sem is on way
          */
         if (d.getMonth() > 5) {
-            var semcode = (yearcode - parseInt(rollnumber.substring(9, 11))) * 2 ;
+            var semcode = (yearcode - parseInt(rollnumber.substring(9, 11))) * 2;
         } else {
             var semcode = ((yearcode - parseInt(rollnumber.substring(9, 11))) * 2) - 1;
         }
-        code = semcode +rollnumber.substring(6, 9) + yearcode ;
+        code = semcode + rollnumber.substring(6, 9) + yearcode;
         console.log(code)
-    }   
+    }
 
-    getDataFromApi(res, rollnumber, code);
+    getDataFromApi(res, rollnumber, code,callcode);
 }
 
 
@@ -126,11 +140,11 @@ function findApi(res, rollnumber) {
  * calls apis  
  */
 
-function getDataFromApi(res, rn, code) {
-
+function getDataFromApi(res, rn, code,callcode) {
+    if(callcode === 0 ) {
 
     request('https://raw.githubusercontent.com/ipuresults/btech/master/api/' + code + '.json', function (error, response, body) {
- 
+
         if (!error && response.statusCode == 200) {
             var info = JSON.parse(body)
             if (info[rn] !== undefined) {
@@ -140,14 +154,33 @@ function getDataFromApi(res, rn, code) {
                 res.render('result', info[rn])
             } else
                 res.render('404')
-        }
-
-        else if(response.statusCode !== 200)  {
+        } else if (response.statusCode !== 200) {
             res.render('404');
             updateApi()
-        }
-        else{
-             res.render('404')
+        } else {
+            res.render('404')
         }
     });
+}else if(callcode === 1){
+
+    request('https://raw.githubusercontent.com/aniket965/res/master/api/' + code + '.json', function (error, response, body) {
+
+        if (!error && response.statusCode == 200) {
+            var info = JSON.parse(body)
+            if (info[rn] !== undefined) {
+                roll = rn
+                info[rn].total = Math.floor(info[rn].total)
+                info[rn].credit = Math.floor(info[rn].credit)
+                res.render('result', info[rn])
+            } else
+                res.render('404')
+        } else if (response.statusCode !== 200) {
+            res.render('404');
+            updateApi()
+        } else {
+            res.render('404')
+        }
+    });
+}
+
 }
