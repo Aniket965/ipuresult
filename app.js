@@ -117,8 +117,10 @@ function findApi(res, rollnumber) {
         rollnumber.indexOf("740") === 6) {
         code = rollnumber.substr(6, 3) + yearcode;
         console.log(code);
-
-        callcode = 1;
+            if (rollnumber.indexOf("039") === 6)
+                callcode = 0
+            else
+                callcode = 1;
     } else {
 
         /**
