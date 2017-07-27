@@ -153,7 +153,6 @@ function getDataFromApi(res, rn, code,callcode) {
             var info = JSON.parse(body)
             if (info[rn] !== undefined) {
                 roll = rn
-    
                 res.render('result', info[rn])
             } else
                 res.render('404')
@@ -172,9 +171,6 @@ function getDataFromApi(res, rn, code,callcode) {
             var info = JSON.parse(body)
             if (info[rn] !== undefined) {
                 roll = rn
-                info[rn].total = info[rn].total
-                info[rn].credit =info[rn].credit
-            
                 res.render('result', info[rn])
             } else
                 res.render('404')
