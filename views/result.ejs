@@ -97,8 +97,8 @@
             <div class="col s1 m2 l2"></div>
             <div class="col s4 m2 l2">
                 <div class="clearfix" id="net-percentage">
-                    <div class="c100 p<%= total %> dark">
-                        <span><%= total %>%</span>
+                    <div class="c100 p<%= Math.floor(total) %> dark">
+                        <span><%= total.toFixed(2) %>%</span>
                         <div class="slice">
                             <div class="bar"></div>
                             <div class="fill"></div>
@@ -111,8 +111,8 @@
             <div class="col s1 m4 l4"></div>
             <div class="col s4 m2 l2">
                 <div id="credit-percentage">
-                    <div class="c100 p<%= credit %> dark">
-                        <span><%= credit %>%</span>
+                    <div class="c100 p<%= Math.floor(credit) %> dark">
+                        <span><%= credit.toFixed(2) %>%</span>
                         <div class="slice">
                             <div class="bar"></div>
                             <div class="fill"></div>
