@@ -5,6 +5,9 @@ var app = express();
 var isResultFound = false;
 var isValidSearch = true;
 var studentdata;
+var d = new Date();
+var n = d.getFullYear() + "";
+var yearcode = parseInt(n.substring(2, 4));
 /**
  * set view engine
  */
@@ -91,14 +94,12 @@ function findApi(res, rollnumber) {
     /**
      * for usict
      */
-    var d = new Date();
-    var n = d.getFullYear() + "";
-    var yearcode = parseInt(n.substring(2, 4));
+
     /**
      * callcode 1 is for aniket965/res repo
      * callcode 0  for ipuresults/btech
      */
-    var callcode = 0;   
+    var callcode = 0;
     // if (rollnumber.indexOf("164") === 3) {
 
     //     code = rollnumber.substring(3, 9) + yearcode;
@@ -114,14 +115,14 @@ function findApi(res, rollnumber) {
         rollnumber.indexOf("088") === 6 ||
         rollnumber.indexOf("089") === 6 ||
         rollnumber.indexOf("248") === 6 ||
-        rollnumber.indexOf("740") === 6||
+        rollnumber.indexOf("740") === 6 ||
         rollnumber.indexOf("020") === 6) {
         code = rollnumber.substr(6, 3) + yearcode;
         console.log(code);
-            if (rollnumber.indexOf("039") === 6)
-                callcode = 0
-            else
-                callcode = 1;
+        if (rollnumber.indexOf("039") === 6)
+            callcode = 0
+        else
+            callcode = 1;
     } else {
 
         /**
@@ -132,11 +133,12 @@ function findApi(res, rollnumber) {
         } else {
             var semcode = ((yearcode - parseInt(rollnumber.substring(9, 11))) * 2) - 1;
         }
-        code = semcode + rollnumber.substring(6, 9) + yearcode;
+        var roll_code = rollnumber.substring(6, 9)
+        code = semcode + roll_code + yearcode;
         console.log(code)
     }
-   
-    getDataFromApi(res, rollnumber, code,callcode);
+
+    getDataFromApi(res, rollnumber, code, callcode);
 }
 
 
@@ -144,43 +146,45 @@ function findApi(res, rollnumber) {
  * calls apis  
  */
 
-function getDataFromApi(res, rn, code,callcode) {
-    if(callcode === 0 ) {
-
-    request('https://raw.githubusercontent.com/ipuresults/btech/master/api/' + code + '.json', function (error, response, body) {
-
-        if (!error && response.statusCode == 200) {
-            var info = JSON.parse(body)
-            if (info[rn] !== undefined) {
-                roll = rn
-                res.render('result', info[rn])
-            } else
-                res.render('404')
-        } else if (response.statusCode !== 200) {
-            res.render('404');
-            updateApi()
-        } else {
-            res.render('404')
+function getDataFromApi(res, rn, code, callcode) {
+    if (callcode === 0) {
+        if (code.substr(1, 3) === "074") {
+            code = "6036" + yearcode
         }
-    });
-}else if(callcode === 1){
+        request('https://raw.githubusercontent.com/ipuresults/btech/master/api/' + code + '.json', function (error, response, body) {
 
-    request('https://raw.githubusercontent.com/aniket965/res/master/api/' + code + '.json', function (error, response, body) {
-
-        if (!error && response.statusCode == 200) {
-            var info = JSON.parse(body)
-            if (info[rn] !== undefined) {
-                roll = rn
-                res.render('result', info[rn])
-            } else
+            if (!error && response.statusCode == 200) {
+                var info = JSON.parse(body)
+                if (info[rn] !== undefined) {
+                    roll = rn
+                    res.render('result', info[rn])
+                } else
+                    res.render('404')
+            } else if (response.statusCode !== 200) {
+                res.render('404');
+                updateApi()
+            } else {
                 res.render('404')
-        } else if (response.statusCode !== 200) {
-            res.render('404');
-            updateApi()
-        } else {
-            res.render('404')
-        }
-    });
-}
+            }
+        });
+    } else if (callcode === 1) {
+
+        request('https://raw.githubusercontent.com/aniket965/res/master/api/' + code + '.json', function (error, response, body) {
+
+            if (!error && response.statusCode == 200) {
+                var info = JSON.parse(body)
+                if (info[rn] !== undefined) {
+                    roll = rn
+                    res.render('result', info[rn])
+                } else
+                    res.render('404')
+            } else if (response.statusCode !== 200) {
+                res.render('404');
+                updateApi()
+            } else {
+                res.render('404')
+            }
+        });
+    }
 
 }
