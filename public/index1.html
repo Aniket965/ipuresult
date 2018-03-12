@@ -24,7 +24,8 @@
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css"> -->
 
     <link rel="stylesheet" href="css/main.css">
-    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    <!-- <script src="js/vendor/modernizr-2.8.3.min.js"></script> -->
+    <script src="js/main.js"></script>
 </head>
 
 <body>
@@ -33,36 +34,38 @@
         <![endif]-->
 
     <!-- Add your site or application content here -->
+    <div class="home-page">
+        <div class="heading">
+            <h1 class="ipu-heading">IPU Results</h1>
+        </div>
+        <div class="search-section">
+            <div class="ipur-ss">
+                    <form id="wrapper"  autocomplete="off">
+                        <input class="ipur-search" id="a" name="search" type="text" placeholder="Roll Number..." list="names" required="true" />
+                    </form>
 
-    <div class="heading">
-        <h1 class="heading-brand">IPU Results</h1>
-    </div>
 
-    <div class="search-wrap">
-        <input type="checkbox" id="handle-ctrl" />
-        <input type="checkbox" id="back-ctrl" />
-        <form id="wrapper" autocomplete="off">
-            <input id="a" name="search" type="text" placeholder="Roll Number..." list="names" required="true" />
-            <label for="handle-ctrl" id="handle-wrapper">
-                <div id="handle"></div>
-            </label>
-        </form>
-    </div>
+                <div id="ipursb" class="ipur-sbutton" onclick="search()" >
+                    <div class="searchbutton-icon">
+                        <i class="material-icons sbi">keyboard_arrow_right</i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="love-section">
+            <h2 class="love">
 
-    <div class="quote">
-        <h2 class="quote-wrap"> made with <a href="http://aniket965.tech/"><i class="material-icons">favorite</i></a></h2>
-        <h6 class="quote-wrap">0.1 Beta</h6>
-
+                Made with
+                <a href="https://aniket965.github.io">❤️</a>
+            </h2>
+        </div>
     </div>
     <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <!-- Compiled and minified JavaScript -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script> -->
 
-    <script>
-        window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')
 
-    </script>
-    <script src="js/plugins.js"></script>
+    <!-- <script src="js/plugins.js"></script> -->
     <script src="js/main.js"></script>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->

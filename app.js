@@ -73,6 +73,7 @@ function searchResult(res, rollnumber) {
   } else {
     isResultFound = false;
     isValidSearch = false;
+    res.render("404");
   }
 }
 
