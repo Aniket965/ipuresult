@@ -208,7 +208,7 @@ body {
 }
 
 .rnf-page {
-    background: rgb(41,49,74);  /* fallback for old browsers */
+    background: #29314a;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to top, rgb(62,72,103), rgb(41,49,74));  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to top, rgb(62,72,103), rgb(41,49,74));
     height: 100vh;
