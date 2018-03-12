@@ -27,6 +27,18 @@ app.listen(process.env.PORT || 2000, () => console.log("Listening port 2000"));
 
 var roll;
 
+function findSubjectCode(id, subjectkeys) {
+  if (subjectkeys) {
+    let ids = Object.keys(subjectkeys);
+    let name = "";
+    ids.forEach(uid => {
+      if (uid.includes(id)) name = initials(subjectkeys[uid]);
+    });
+    return name;
+  } else return "";
+}
+
+
 /**
  * Search request
  */
@@ -104,7 +116,9 @@ function getDataFromApi(res, rn, code, callcode, yearcode) {
           var info = JSON.parse(body);
           if (info[rn] !== undefined) {
             roll = rn;
-            res.render("result", info[rn]);
+          let r = info[rn]
+          r['codes'] = info['subject_codes']
+            res.render("result", r);
           } else {
             res.render("404");
           }
@@ -126,7 +140,9 @@ function getDataFromApi(res, rn, code, callcode, yearcode) {
           var info = JSON.parse(body);
           if (info[rn] !== undefined) {
             roll = rn;
-            res.render("result", info[rn]);
+            let r = info[rn]
+            let subcodes = info['subject_codes']
+            res.render("result", r);
           } else res.render("404");
         } else if (response.statusCode !== 200) {
           res.render("404");
