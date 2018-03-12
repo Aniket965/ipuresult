@@ -5,13 +5,13 @@
     <meta name="theme-color" content="#DD2476">
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-  (adsbygoogle = window.adsbygoogle || []).push({
-    google_ad_client: "ca-pub-4341496653996572",
-    enable_page_level_ads: true
-  });
-</script>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-4341496653996572",
+            enable_page_level_ads: true
+        });
+    </script>
     <title>Result</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,12 +20,7 @@
     <!-- Place favicon.ico in the root directory -->
     <!-- Compiled and minified CSS -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
-
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/result.css">
-    <link rel="stylesheet" href="css/circle.css">
-    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    <link rel="stylesheet" href="css/main.css">
 
 </head>
 
@@ -35,161 +30,79 @@
         <![endif]-->
 
     <!-- Add your site or application content here -->
-
-    <div class="heading">
-        <h1 class="heading-brand">Result</h1>
-    </div>
-
-    <nav style="background-color:transparent;">
-        <div class="nav-wrapper">
-            <div class="col s12">
-
-                <a href="#!" class="breadcrumb">
-                    <%= rollnumber %>
-                </a>
-                <a href="#!" class="breadcrumb">
-                    <%= name %>
-                </a>
+    <div class='result-page'>
+        <div id='grad2'>
+            <div id='grad1'>
+                <div>
+                    <div class='first'>IPU RESULT</div>
+                    <div class='second'>
+                        <%= total.toFixed(2) %>%(T)</div>
+                    <div class='third'>
+                        <%= credit.toFixed(2) %>%(C)</div>
+                </div>
             </div>
-        </div>
-    </nav>
+
+            <h1 id='head1' style={{ textAlign: 'left', fontWeight: 2, marginLeft: '20px' }}>
+                <%= name %>
+            </h1>
+            <h2 id='head2' style={{ textAlign: 'left', fontWeight: 2, marginLeft: '20px' }}>
+                <%= rollnumber %> </h2>
+                    <% for(var i =0 ; i < result.length;i++){%>
+                        <div class='w3-container'>
+                            <div class='w3-panel w3-card'>
+                                <div class='marks'>
+                                    <div class='rect'>
+                                        <div class='circle'>
+                                            <div>
+                                                <i class='material-icons'>done</i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <%if (rollnumber.indexOf("024") === 6) { %>
+                                            <div class='grid2'>
+                                                <%= codes[241 + result[i].id.substr(3,2)] %>
+                                            </div>
 
 
-    <div class="tbl-header">
-        <table cellpadding="0" cellspacing="0" border="0">
-            <thead>
-                <tr>
-                    <th>Subject id</th>
-                    <th>Internal Marks</th>
-                    <th>External Marks</th>
-                    <th>Total Marks</th>
-                    <th>Credits Secured</th>
-                </tr>
-            </thead>
-        </table>
-    </div>
-    <div class="tbl-content">
-        <table cellpadding="0" cellspacing="0" border="0">
-            <tbody>
+                                            <%} else{%>
+                                                <td>
+                                                    <div class='grid2'></div>
+                                                </td>
+                                                <%}%>
+                                                    <div class='grid3'>
+                                                        <%= result[i].id %>
+                                                    </div>
+                                    </div>
+                                    <div>
+                                        <div class='grid2'>EX
+                                            <%= result[i].external_mark %>
+                                        </div>
+                                        <div class='grid3'>IN
+                                            <%= result[i].internal_mark %>
+                                        </div>
+                                    </div>
 
-                <% for(var i =0 ; i < result.length;i++){%>
-                    <tr>
-                        <%if (rollnumber.indexOf("024") === 6) { %>
-                        <td><%= codes[241 + result[i].id.substr(3,2)] %></td>
-                        <%} else{%>
-                            <td><%= result[i].id %></td>
+                                    <div class='grid4'>
+                                        <%= result[i].total %>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
                         <%}%>
-                        <td><%= result[i].internal_mark %></td>
-                        <td><%= result[i].external_mark %></td>
-                        <td><%= result[i].total %></td>
-                        <td><%= result[i].credit %></td>
-                    </tr>
-                    <%}%>
-
-            </tbody>
-        </table>
-    </div>
-    </section>
-    <div class="row"> </div>
-    <div class="row"> </div>
-    <div class="row"> </div>
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-format="fluid"
-     data-ad-layout="image-middle"
-     data-ad-layout-key="-ej+6g-15-c4+qd"
-     data-ad-client="ca-pub-4341496653996572"
-     data-ad-slot="5086862652"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
-    <!-- Rank Section -->
-    <div class="rank-section">
-        <div class="row">
-            <div class="col s1 m2 l2"></div>
-            <div class="col s4 m2 l2">
-                <div class="clearfix" id="net-percentage">
-                    <div class="c100 p<%= Math.floor(total) %> dark">
-                        <span><%= total.toFixed(2) %>%</span>
-                        <div class="slice">
-                            <div class="bar"></div>
-                            <div class="fill"></div>
-                        </div>
-                    </div>
-                    <br>
-                    <p class="circle-title">Total</p>
-                </div>
-            </div>
-            <div class="col s1 m4 l4"></div>
-            <div class="col s4 m2 l2">
-                <div id="credit-percentage">
-                    <div class="c100 p<%= Math.floor(credit) %> dark">
-                        <span><%= credit.toFixed(2) %>%</span>
-                        <div class="slice">
-                            <div class="bar"></div>
-                            <div class="fill"></div>
-                        </div>
-
-                    </div>
-                    <br>
-                    <p class="circle-title">Credit</p>
-                </div>
-
-
-            </div>
         </div>
-
-        <div class="row"></div>
-        <div class="row"></div>
-
-        <nav style="background-color:transparent;">
-            <div class="nav-wrapper">
-                <div class="col s12">
-
-
-                </div>
-            </div>
-        </nav>
-
-
-        <nav style="background-color:transparent;">
-            <div class="nav-wrapper">
-                <div class="col s12">
-
-
-                </div>
-            </div>
-        </nav>
-
+        <div style="padding:2rem;" ></div>
     </div>
-    <div class="row"></div>
-    <div class="row"></div>
 
-    <div class="quote">
-        <h6 class="quote-wrap">0.1 Beta<br><br> <strong>Note</strong>:- <br>
-            <br>
 
-            This site is under construction
-            <br> Some features might not work properly. <br>We are working very hard to complete asap
-            <br>
-            <br>
-            Please check your result in original site as well
+    <!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-format="fluid" data-ad-layout="in-article" data-ad-client="ca-pub-4341496653996572"
+        data-ad-slot="2871106310"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script> -->
 
-        </h6>
-    </div>
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-format="fluid"
-     data-ad-layout="in-article"
-     data-ad-client="ca-pub-4341496653996572"
-     data-ad-slot="2871106310"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <!-- Compiled and minified JavaScript -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script> -->
 
@@ -201,18 +114,18 @@
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
-        (function (b, o, i, l, e, r) {
-            b.GoogleAnalyticsObject = l;
-            b[l] || (b[l] =
-                function () {
-                    (b[l].q = b[l].q || []).push(arguments)
-                });
-            b[l].l = +new Date;
-            e = o.createElement(i);
-            r = o.getElementsByTagName(i)[0];
-            e.src = 'https://www.google-analytics.com/analytics.js';
-            r.parentNode.insertBefore(e, r)
-        }(window, document, 'script', 'ga'));
+            (function (b, o, i, l, e, r) {
+                b.GoogleAnalyticsObject = l;
+                b[l] || (b[l] =
+                    function () {
+                        (b[l].q = b[l].q || []).push(arguments)
+                    });
+                b[l].l = +new Date;
+                e = o.createElement(i);
+                r = o.getElementsByTagName(i)[0];
+                e.src = 'https://www.google-analytics.com/analytics.js';
+                r.parentNode.insertBefore(e, r)
+            }(window, document, 'script', 'ga'));
         ga('create', 'UA-99011528-3', 'auto');
         ga('send', 'pageview');
     </script>
