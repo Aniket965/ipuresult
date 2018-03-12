@@ -1,5 +1,4 @@
-$(document).ready(()=>{
-    $('.heading').click(()=>{
-        window.location.href = "/";
-    });
-});     
+
+function back() {
+    window.location.href = "/";
+}
