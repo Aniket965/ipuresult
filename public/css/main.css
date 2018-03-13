@@ -120,9 +120,15 @@ body {
 .w3-panel{
   background: whitesmoke;
   border-radius: 15px;
-  margin:1rem;
-  padding: 1rem;
+  margin:0.5rem;
+  padding: 0.8rem;
+  /* display: grid; */
+  /* grid-template-rows: 1fr 2fr; */
+}
 
+.w3card-result,.w3card-result-id{
+  align-self: center;
+  justify-self: center;
 }
 #head1{
   font-size:2rem;
@@ -207,9 +213,9 @@ background-size: 400% 400%;
   color:black;
 }
 .grid3 {
-  margin-left: 0.5em;
   color:black;
 }
+
 .subject-name{
   font-size: 1rem;
   margin: 0.3em;
