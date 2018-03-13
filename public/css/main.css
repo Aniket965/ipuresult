@@ -167,6 +167,7 @@ body {
 {
   width: 2rem;
   height: 2rem;
+  position: relative;
   /* border-radius: 50%; */
   border-color:white;
   display: grid;
@@ -194,10 +195,7 @@ body {
   align-content: center;
   justify-self: center;
   justify-content: center;
-  background: #00c6ff;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #0072ff, #00c6ff);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #0072ff, #00c6ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  background-size: 400% 400%;
+background-size: 400% 400%;
   -webkit-animation: brandingAnim 2s ease-out infinite;
   animation: brandingAnim 2s ease-out infinite;
 }
@@ -288,4 +286,24 @@ body {
       font-size: 1rem;
       padding: 1.5rem;
     }
+  }
+
+  @keyframes drift {
+    from { transform: rotate(0deg); }
+    from { transform: rotate(360deg); }
+  }
+  .wave {
+    opacity: .4;
+    position: absolute;
+    background: #0af;
+    margin-left: -0.5rem;
+    width: 3rem;
+    height: 3rem;
+    transform-origin: 50% 48%;
+    border-radius: 43%;
+    animation: drift 3000ms infinite linear;
+  }
+
+  .wave.-three {
+    animation: drift 5000ms infinite linear;
   }
