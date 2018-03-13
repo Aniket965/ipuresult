@@ -34,7 +34,7 @@
         <div id='grad2'>
             <div id='grad1'>
                 <div>
-                    <div class='first' style="cursor: pointer;" onclick="back()" >IPU RESULT</div>
+                    <div class='first' style="cursor: pointer;" onclick="back()">IPU RESULT</div>
                     <div class='second'>
                         <%= total.toFixed(2) %>%(T)</div>
                     <div class='third'>
@@ -42,57 +42,60 @@
                 </div>
             </div>
 
-            <h1 id='head1' style={{ textAlign: 'left', fontWeight: 2, marginLeft: '20px' }}>
+            <h1 id='head1' style="text-align: left; font-weight: 2; margin-left:20px ">
                 <%= name %>
             </h1>
-            <h2 id='head2' style={{ textAlign: 'left', fontWeight: 2, marginLeft: '20px' }}>
-                <%= rollnumber %> </h2>
-                    <% for(var i =0 ; i < result.length;i++){%>
-                        <div class='w3-container'>
-                            <div class='w3-panel w3-card'>
-                                <div class='marks'>
-                                    <div class='rect'>
-                                        <div class='circle'>
-                                            <div>
-                                                <i class='material-icons'>done</i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <%if (rollnumber.indexOf("024") === 6) { %>
-                                            <div class='grid2'>
-                                                <%= codes[241 + result[i].id.substr(3,2)] %>
-                                            </div>
+            <h2 id='head2' style="text-align: left; font-weight: 2; margin-left:20px ">
+                <%= rollnumber %>
+            </h2>
+            <% for(var i =0 ; i < result.length;i++){%>
+                <div class='w3-container'>
+                    <div class='w3-panel w3-card'>
+
+                        <%if (rollnumber.indexOf("024") === 6) { %>
+                            <div class="subject-name">
+                                <%= codes[241 + result[i].id.substr(3,2)] %>
+                            </div>
 
 
-                                            <%} else{%>
-                                                <td>
-                                                    <div class='grid2'></div>
-                                                </td>
-                                                <%}%>
-                                                    <div class='grid3'>
-                                                        <%= result[i].id %>
-                                                    </div>
-                                    </div>
-                                    <div>
-                                        <div class='grid2'>EX
-                                            <%= result[i].external_mark %>
-                                        </div>
-                                        <div class='grid3'>IN
-                                            <%= result[i].internal_mark %>
-                                        </div>
-                                    </div>
-
-                                    <div class='grid4'>
-                                        <%= result[i].total %>
-                                    </div>
+                            <%} else{%>
+                                <div class="subject-name">
 
                                 </div>
-                            </div>
-                        </div>
-                        <%}%>
+                                <%}%>
+                                    <div class='marks'>
+                                        <div class='rect'>
+                                            <div class='circle'>
+                                                <div>
+                                                    <i class='material-icons'>equalizer</i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+
+                                            <div class='grid3'>
+                                                <%= result[i].id %>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class='grid2'>EX
+                                                <%= result[i].external_mark %>
+                                            </div>
+                                            <div class='grid3'>IN
+                                                <%= result[i].internal_mark %>
+                                            </div>
+                                        </div>
+
+                                        <div class='grid4'>
+                                            <%= result[i].total %>
+                                        </div>
+
+                                    </div>
+                    </div>
+                </div>
+                <%}%>
         </div>
-        <div style="padding:2rem;" ></div>
+        <div style="padding:2rem;"></div>
     </div>
 
 
@@ -114,18 +117,18 @@
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
-            (function (b, o, i, l, e, r) {
-                b.GoogleAnalyticsObject = l;
-                b[l] || (b[l] =
-                    function () {
-                        (b[l].q = b[l].q || []).push(arguments)
-                    });
-                b[l].l = +new Date;
-                e = o.createElement(i);
-                r = o.getElementsByTagName(i)[0];
-                e.src = 'https://www.google-analytics.com/analytics.js';
-                r.parentNode.insertBefore(e, r)
-            }(window, document, 'script', 'ga'));
+        (function (b, o, i, l, e, r) {
+            b.GoogleAnalyticsObject = l;
+            b[l] || (b[l] =
+                function () {
+                    (b[l].q = b[l].q || []).push(arguments)
+                });
+            b[l].l = +new Date;
+            e = o.createElement(i);
+            r = o.getElementsByTagName(i)[0];
+            e.src = 'https://www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e, r)
+        }(window, document, 'script', 'ga'));
         ga('create', 'UA-99011528-3', 'auto');
         ga('send', 'pageview');
     </script>
