@@ -1,8 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+html {
+  scroll-behavior: smooth;
+}
 body {
   font-family: 'Montserrat', sans-serif;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 .ipu-heading {
   font-size: 5rem;
@@ -26,6 +30,9 @@ body {
   color: azure;
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
+}
+.love-section {
+  display: grid;
 }
 .ipur-search {
   width: 100%;
@@ -312,3 +319,80 @@ background-size: 400% 400%;
   .wave.-three {
     animation: drift 5000ms infinite linear;
   }
+
+  .about-page{
+    min-height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-rows: 1fr 5fr;
+  }
+  .about-page div {
+    justify-self: center;
+  }
+  .about-page  div h2{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    color: #e3517c;
+    text-align: center;
+    width: 60vw;
+  
+    /* min-width: 250px; */
+    background: white;
+    border: 2px solid  rgba(0, 0, 0, 0.3);
+    border-radius: 2px ;
+    box-shadow:6px 6px 2px 0px rgba(0, 0, 0, 0.3);
+    padding: 1rem;
+    margin: 1rem;
+  }
+  .about-page div h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.7rem;
+    width: 40vw;
+    color:  rgba(0, 0, 0, 0.3);
+  }
+  .imp {
+    color:  rgba(0, 0, 0, 0.5);
+  }
+  @media only screen and (max-width: 780px) {
+    .ipu-heading {
+      font-size: 3.5rem;
+    }
+    .about-page  div h2{
+      width:80vw;
+    }
+    .about-page  div h3{
+      width:80vw;
+      font-size: 1.4rem;
+    }
+    .ipur-ss {
+      width: 90vw;
+    }
+  }
+
+  .love-section div {
+    color: #e3517c;
+    height: 4rem;
+    width: 4rem;
+    justify-self: center;
+    background: white;
+    /* margin-top:20px; */
+    cursor: pointer;
+    border-radius: 50%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    border: 2px solid  rgba(0, 0, 0, 0.3);
+    box-shadow:6px 6px 2px 0px rgba(0, 0, 0, 0.3);
+    display: grid;
+  }
+  .love-section div:hover {
+  
+    box-shadow:4px 4px 2px 0px rgba(0, 0, 0, 0.3);
+  
+  }
+  .love-section div i{
+    justify-self: center;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    align-self: center;
+    user-select: none;
+    font-size: 3rem;
+    color: #e3517c;
+  }  
