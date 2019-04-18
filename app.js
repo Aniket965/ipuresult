@@ -49,6 +49,7 @@ app.get('/', (req, res) => {
    *
    */
   if (req.query.search !== undefined) {
+    
     searchResult(res, req.query.search.toString())
   } else
     /**
@@ -110,15 +111,24 @@ function getDataFromApi (res, rn, code, callcode, yearcode) {
     if (code.substr(1, 3) === '074') {
       code = '6036' + yearcode
     }
+    if (code.substr(1, 3) === '072') {
+      code = '5027' + yearcode
+    }
+    console.log(code)
     request(`https://raw.githubusercontent.com/ipuresults/btech/master/api/${code}.json`,
       function (error, response, body) {
+
         if (!error && response.statusCode == 200) {
+          console.log("uoyooh")
           var info = JSON.parse(body)
+          console.log(rn  )
           if (info[rn] !== undefined) {
             roll = rn
           let r = info[rn]
             r['codes'] = info['subject_codes']
             res.render('result', r)
+          
+    
           } else {
             res.render('404')
           }
