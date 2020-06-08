@@ -112,9 +112,10 @@ function getDataFromApi (res, rn, code, callcode, yearcode) {
       code = '6036' + yearcode
     }
     if (code.substr(0, 3) === '072') {
-      code = '5027' + yearcode
+      code = '7027' + yearcode
     }
-
+    console.log(code);
+    
     request(`https://raw.githubusercontent.com/ipuresults/btech/master/api/${code}.json`,
       function (error, response, body) {
 
